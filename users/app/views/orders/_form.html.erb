@@ -1,0 +1,38 @@
+<%= form_with(model: order, local: true) do |f| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div>
+      <%= f.label :origin %>
+      <%= f.text_field :origin %>
+    </div><br>
+
+    <div>
+      <%= f.label :destination %>
+      <%= f.text_field :destination %>
+    </div><br>
+
+    <div>
+      <%= f.label :payment_type, 'Payment Type' %>
+      <%= f.select :payment_type, Order.payment_types.keys %>
+    </div><br>
+
+    <div>
+      <%= f.label :service, 'Service Type' %>
+      <%= f.collection_select :service_id, Service.all, :id, :service_type %>
+    </div><br>
+
+    <div>
+      <%= f.submit %>
+    </div>
+  </fieldset>
+<% end %>
+<br>

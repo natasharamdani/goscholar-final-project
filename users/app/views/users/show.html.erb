@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Details</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.fullname %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @user.phone %>
+</p>
+
+<p>
+  <strong>Go-Pay:</strong>
+  <%= number_to_currency(@gopay.balance, unit: "Rp ", delimiter: ".", separator: ",") %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

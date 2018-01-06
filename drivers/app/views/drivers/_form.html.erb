@@ -1,0 +1,48 @@
+<%= form_with(model: driver, local: true) do |f| %>
+  <% if driver.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% driver.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div>
+      <%= f.label :fullname, 'Name' %>
+      <%= f.text_field :fullname %>
+    </div><br>
+
+    <div>
+      <%= f.label :phone %>
+      <%= f.text_field :phone %>
+    </div><br>
+
+    <div>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div><br>
+
+    <div>
+      <%= f.label :service_type, 'Service Type' %>
+      <%= f.select :service_type, Driver.service_types.keys %>
+    </div><br>
+
+    <div>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div><br>
+
+    <div>
+      <%= f.label :password_confirmation, 'Password Confirmation' %>
+      <%= f.password_field :password_confirmation %>
+    </div><br>
+
+    <div>
+      <%= f.submit %>
+    </div>
+  </fieldset>
+<% end %>
+<br>

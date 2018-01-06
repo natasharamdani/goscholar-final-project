@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <head>
+    <title>GO-JEK Web App</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag 'gojek.png' %>
+  </head>
+
+  <body style="padding-bottom:5%">
+    <div class="w3-sidebar w3-bar-block w3-black w3-center" style="width:10%">
+      <%= link_to (image_tag 'gojek-logo.jpg', width: '95%'), home_path %>
+      <a href="/" class="w3-bar-item w3-button">Home</a>
+      <% if session[:driver_id] %>
+        <a href="/drivers" class="w3-bar-item w3-button">My Account</a>
+        <a href="/orders" class="w3-bar-item w3-button">Job History</a>
+      <% else %>
+        <a href="/drivers/new" class="w3-bar-item w3-button">Register</a>
+      <% end %>
+    </div>
+
+    <div style="margin-left:10%">
+      <nav class="w3-bar w3-black" style="font-weight:bold">
+        <% if session[:driver_id] %>
+          <a href="/logout" data-method="delete" class="w3-button w3-bar-item" style="float:right">Logout</a>
+        <% else %>
+          <a href="/login" class="w3-button w3-bar-item" style="float:right">Driver Login</a>
+        <% end %>
+      </nav>
+
+      <div style="margin:1%">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+
+  <footer class="w3-container w3-center w3-white w3-xlarge footer" style="height:10%">
+    <a href="http://facebook.com/gojekindonesia"><i class="fa fa-facebook-official"></i></a>
+    <a href="http://twitter.com/gojekindonesia"><i class="fa fa-twitter"></i></a>
+    <a href="http://instagram.com/gojekindonesia/"><i class="fa fa-instagram"></i></a>
+    <a href="http://youtube.com/channel/UCmlKSK0OKn_B3oPwElW4n5w"><i class="fa fa-youtube"></i></a>
+    <p class="w3-medium" style="margin:0">
+    © 2017 GO-SCHOLAR Ruby on Rails
+    </p>
+  </footer>
+</html>

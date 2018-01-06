@@ -1,0 +1,19 @@
+<h1>Account</h1>
+
+<table style="text-align: center">
+  <tr>
+    <th width="35%">Customer Name</th>
+    <th width="35%">Go-Pay Balance</th>
+    <th></th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.fullname %></td>
+      <td><%= number_to_currency(@gopay.balance, unit: "Rp ", delimiter: ".", separator: ",") %></td>
+      <td>
+        <%= link_to 'Details', user %> |
+        <%= link_to 'Top Up Go-Pay', topup_user_path(user) %>
+      </td>
+    </tr>
+  <% end %>
+</table>

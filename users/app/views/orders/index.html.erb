@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>History</h1>
+
+<% if !@orders.blank? %>
+  <table style="text-align: center">
+    <tr>
+      <th width="23%">Service Type</th>
+      <th width="23%">State</th>
+      <th width="23%">Origin</th>
+      <th width="23%">Destination</th>
+      <th></th>
+    </tr>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.service.service_type %></td>
+        <td><%= order.state %></td>
+        <td><%= order.origin %></td>
+        <td><%= order.destination %></td>
+        <td>
+          <%= link_to 'Details', order %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  Seems you don't have any history.
+<% end %>

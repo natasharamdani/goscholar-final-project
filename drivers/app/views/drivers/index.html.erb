@@ -1,0 +1,20 @@
+<h1>Account</h1>
+
+<table style="text-align: center">
+  <tr>
+    <th width="31%">Driver Name</th>
+    <th width="31%">Go-Pay Balance</th>
+    <th width="31%">Current Location</th>
+    <th></th>
+  </tr>
+  <% @drivers.each do |driver| %>
+    <tr>
+      <td><%= driver.fullname %></td>
+      <td><%= number_to_currency(@gopay.balance, unit: "Rp ", delimiter: ".", separator: ",") %></td>
+      <td><%= driver.location %></td>
+      <td>
+        <%= link_to 'Details', driver %>
+      </td>
+    </tr>
+  <% end %>
+</table>

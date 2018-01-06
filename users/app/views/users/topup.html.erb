@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Current Balance:</strong>
+  <%= number_to_currency(@gopay.balance, unit: "Rp ", delimiter: ".", separator: ",") %>
+</p>
+
+<%= form_for user_path, method: :patch do |f| %>
+  <fieldset>
+    <div>
+      <%= f.label :amount %>
+      <%= text_field_tag :amount, params[:amount] %>
+    </div><br>
+
+    <div>
+      <%= f.submit 'Top Up' %>
+    </div>
+  </fieldset>
+<% end %>
+
+<br>
+
+<%= link_to 'Back', users_path %>

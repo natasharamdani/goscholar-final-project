@@ -1,0 +1,49 @@
+<h1>Order Details</h1>
+
+<p>
+  <strong>Service Type:</strong>
+  <%= @order.service.service_type %>
+</p>
+
+<p>
+  <strong>Origin:</strong>
+  <%= @order.origin %>
+</p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @order.destination %>
+</p>
+
+<p>
+  <strong>Distance:</strong>
+  <%= @order.distance %> km
+</p>
+
+<p>
+  <strong>Payment Type:</strong>
+  <%= @order.payment_type %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= number_to_currency(@order.price, unit: "Rp ", delimiter: ".", separator: ",") %>
+</p>
+
+<p>
+  <strong>Driver:</strong>
+  <%= @order.driver_name %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @order.state %>
+</p>
+
+<% if @order.state == "Finding Driver" %>
+  <p>
+    <%= link_to 'Cancel', cancel_path %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', orders_path %>

@@ -1,0 +1,26 @@
+<h1>History</h1>
+
+<% if !@orders.blank? %>
+  <table style="text-align: center">
+    <tr>
+      <th width="22%">Origin</th>
+      <th width="22%">Destination</th>
+      <th width="22%">Payment Type</th>
+      <th width="22%">Distance</th>
+      <th width="22%">Price</th>
+    </tr>
+    <% @orders.each do |order| %>
+      <% if order.driver_id == session[:driver_id] %>
+        <tr>
+          <td><%= order.origin %></td>
+          <td><%= order.destination %></td>
+          <td><%= order.payment_type %></td>
+          <td><%= order.distance %> km</td>
+          <td><%= number_to_currency(order.price, unit: "Rp ", delimiter: ".", separator: ",") %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+<% else %>
+  Seems you don't have any history.
+<% end %>

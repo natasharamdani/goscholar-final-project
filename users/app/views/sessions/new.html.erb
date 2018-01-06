@@ -1,0 +1,25 @@
+<h2>Enter your registered phone number to login</h2>
+
+<p id="notice"><%= notice %></p>
+
+<%= form_tag do %>
+  <fieldset> 
+    <div>
+      <%= label_tag :phone_number %>
+      <%= text_field_tag :phone, params[:phone] %>
+    </div><br>
+    
+    <div>
+      <%= label_tag :password %>
+      <%= password_field_tag :password, params[:password] %>
+    </div><br>
+    
+    <div>
+      <%= submit_tag "LOGIN" %>
+    </div>
+  </fieldset>
+<% end %>
+
+<br>
+
+<%= link_to 'REGISTER', new_user_path %>
